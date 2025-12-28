@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>connectwithRushi</title>
+   <link rel="stylesheet" href="style.css">
+    <!-- Tailwind config (must be before loading the CDN script) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // We are using the 'dark' class on the HTML tag
+            theme: {
+                extend: {
+                    colors: {
+                        // Dark theme
+                        'dark-bg': '#0b1220',
+                        'dark-surface': '#0f1724',
+                        'dark-accent': '#7C3AED', // Vibrant violet for accents in dark mode
+
+                        // Light theme
+                        'light-bg': '#F8FAFC',
+                        'light-surface': '#FFFFFF',
+                        'light-accent': '#2563EB', // Blue accent for light mode
+
+                        // Primary brand color
+                        'primary': {
+                            500: '#2563EB',
+                            700: '#1E40AF',
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<!-- Body uses dynamic Tailwind classes for theme colors -->
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
+
+    <!-- Navbar: Fixed header with navigation links and theme toggle -->
+         <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md shadow-lg
+             bg-white/90 border-b border-gray-200
+             dark:bg-gray-900/90 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            <a href="#hero" class="flex items-center space-x-3 transition duration-300 hover:opacity-80" aria-label="Homepage">
+                <img src="img/rwLogo.png" alt="Rushikesh Wani logo" class="w-10 h-10 rounded-full object-cover" />
+                 <span class="text-2xl font-extrabold text-blue-600 dark:text-violet-400"></span>
+            </a>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Desktop Navigation Links (right-aligned) -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 font-medium transition duration-200 ease-in-out transform hover:-translate-y-1 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:text-gray-300 dark:focus:ring-violet-400">About</a>
+                    <a href="#education" class="text-gray-600 font-medium transition duration-200 ease-in-out transform hover:-translate-y-1 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:text-gray-300 dark:focus:ring-violet-400">Education</a>
+                    <a href="#experience" class="text-gray-600 font-medium transition duration-200 ease-in-out transform hover:-translate-y-1 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:text-gray-300 dark:focus:ring-violet-400">Experience</a>
+                    <a href="#skills" class="text-gray-600 font-medium transition duration-200 ease-in-out transform hover:-translate-y-1 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:text-gray-300 dark:focus:ring-violet-400">Skills</a>
+                    <a href="#projects" class="text-gray-600 font-medium transition duration-200 ease-in-out transform hover:-translate-y-1 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:text-gray-300 dark:focus:ring-violet-400">Projects</a>
+                    <a href="#contact" class="text-gray-600 font-medium transition duration-200 ease-in-out transform hover:-translate-y-1 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:text-gray-300 dark:focus:ring-violet-400">Contact</a>
+                </nav>
+
+                <!-- Mobile menu button (visible on small screens) -->
+
+                    <button id="mobileMenuButton" aria-controls="mobileNav" aria-expanded="false" class="md:hidden p-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-violet-400 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600 mr-2">
+                        <svg data-lucide="menu" class="w-6 h-6"></svg>
+                    </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobileNav" class="hidden md:hidden fixed inset-0 bg-black/40 z-40">
+        <div class="absolute top-0 right-0 w-3/4 max-w-xs h-full bg-white dark:bg-gray-800 p-6 shadow-xl">
+            <div class="flex items-center justify-between mb-6">
+                <a href="#hero" class="flex items-center space-x-3" aria-label="Homepage">
+                    <img src="img/rwLogo.png" alt="Rushikesh Wani logo" class="w-10 h-10 rounded-full object-cover" />
+                    <span class="text-lg font-bold text-blue-600 dark:text-violet-400"></span>
+                </a>
+                <button id="mobileCloseButton" class="p-2 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-violet-400 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none">
+                    <svg data-lucide="x" class="w-5 h-5"></svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col space-y-4">
+                <a href="#about" class="text-gray-700 dark:text-gray-200 font-medium">About</a>
+                <a href="#education" class="text-gray-700 dark:text-gray-200 font-medium">Education</a>
+                <a href="#experience" class="text-gray-700 dark:text-gray-200 font-medium">Experience</a>
+                <a href="#skills" class="text-gray-700 dark:text-gray-200 font-medium">Skills</a>
+                <a href="#projects" class="text-gray-700 dark:text-gray-200 font-medium">Projects</a>
+                <a href="#contact" class="text-gray-700 dark:text-gray-200 font-medium">Contact</a>
+            </nav>
+            <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <!-- Theme toggle removed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero" class="pt-16 pb-12 md:pt-32 md:pb-20 min-h-screen flex items-center transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full mb-6 border-4 border-blue-600 shadow-xl overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <img src="img/Rw.jpg" alt="RW" class="w-full h-full object-cover" />
+                    </div>
+
+                    <p class="text-lg font-medium text-blue-600 dark:text-violet-400 mb-2">👋 Hello, I'm</p>
+                    <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight mb-4 leading-tight">
+                        Rushikesh Wani
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-semibold mb-8 max-w-2xl text-gray-700 dark:text-gray-300">
+                        Passionate Computer Engineer | Java Developer | Aspiring Full-Stack Developer
+                    </h2>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#projects" class="px-8 py-3 text-white font-semibold rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center justify-center
+                                   bg-blue-600 hover:bg-blue-700 dark:bg-violet-600 dark:text-gray-900 dark:hover:opacity-90">
+                            View My Work
+                            <svg data-lucide="arrow-right" class="ml-2 h-5 w-5"></svg>
+                        </a>
+                        <a href="mailto:rushikeshwani.210@gmail.com?subject=Inquiry%20from%20Portfolio" class="px-8 py-3 font-semibold rounded-lg border-2 shadow-md transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg flex items-center justify-center
+                                   bg-white text-blue-600 border-blue-600 hover:bg-gray-100
+                                   dark:bg-gray-800 dark:text-violet-400 dark:border-violet-400 dark:hover:bg-gray-700">
+                            Hire Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-4xl font-bold text-center mb-12 border-b-4 border-blue-200 dark:border-violet-400 inline-block px-4 pb-2">
+                    About Me
+                </h3>
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-xl leading-relaxed text-center text-gray-600 dark:text-gray-300">Passionate computer engineer who loves building modern web applications using Java and React.I focus on clean code and performance. I enjoy solving problems, learning new technologies, and turning ideas into real-world solutions through code.
+                    </p>
+                        <div class="mt-6 flex justify-center">
+                            <a href="img/RushikeshWani_SDEResume.pdf" download class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-200 ease-in-out">
+                                Download Resume
+                                <svg data-lucide="download" class="ml-2 h-5 w-5"></svg>
+                            </a>
+                        </div>
+                    <div class="mt-10 flex flex-wrap justify-center gap-6">
+                        <div class="flex items-center space-x-3 text-gray-700 dark:text-gray-200 p-3 rounded-lg bg-gray-100 dark:bg-gray-700">
+                            <svg data-lucide="briefcase" class="h-6 w-6 text-blue-600 dark:text-violet-400"></svg>
+                            <span class="font-medium">Entry Level/Fresher</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-gray-700 dark:text-gray-200 p-3 rounded-lg bg-gray-100 dark:bg-gray-700">
+                            <svg data-lucide="code" class="h-6 w-6 text-blue-600 dark:text-violet-400"></svg>
+                            <span class="font-medium">Java Development</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-gray-700 dark:text-gray-200 p-3 rounded-lg bg-gray-100 dark:bg-gray-700">
+                            <svg data-lucide="zap" class="h-6 w-6 text-blue-600 dark:text-violet-400"></svg>
+                            <span class="font-medium">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-16 md:py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-4xl font-bold text-center mb-12 border-b-4 border-blue-200 dark:border-violet-400 inline-block px-4 pb-2">
+                    Education
+                </h3>
+
+                <div class="max-w-3xl mx-auto space-y-8">
+                    <div class="p-6 rounded-xl shadow-lg border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-2xl font-semibold">B.E Computer Engineering
+                                </h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">KBC North Maharashtra University — 2021 &ndash; 2025</p>
+                            </div>
+                            <div class="text-sm text-blue-600 dark:text-violet-400 font-medium">CGPA: 8.31</div>
+                        </div>
+                        <p class="mt-3 text-gray-600 dark:text-gray-300">Focused on Software engineering principles, data structures and web development</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl shadow-lg border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-2xl font-semibold">HSC </h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400"></p>
+                            </div>
+                            <div class="text-sm text-blue-600 dark:text-violet-400 font-medium">80.67%</div>
+                        </div>
+                        <p class="mt-3 text-gray-600 dark:text-gray-300">Focused on clear fundamentals of formal studies.</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl shadow-lg border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-2xl font-semibold">SSC </h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400"></p>
+                            </div>
+                            <div class="text-sm text-blue-600 dark:text-violet-400 font-medium">82.60%</div>
+                        </div>
+                        <p class="mt-3 text-gray-600 dark:text-gray-300">Focused on clear Basic Concepts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 md:py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-4xl font-bold text-center mb-12 border-b-4 border-blue-200 dark:border-violet-400 inline-block px-4 pb-2">
+                    Experience
+                </h3>
+
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-xl shadow-lg border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-2xl font-semibold">Jr Engineer Intern — Cravita Technologies India Pvt. Ltd.</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Jun 2025 &ndash; Present</p>
+                            </div>
+                            <div class="text-sm text-blue-600 dark:text-violet-400 font-medium">Pune,MH</div>
+                        </div>
+                        <p class="mt-3 text-gray-600 dark:text-gray-300">Worked on backend services and APIs to support the company's core product.</p>
+                        <ul class="mt-3 list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                            <li>Implemented RESTful endpoints using Spring Boot and improved response times by 20%.</li>
+                            <li>Designed and optimized MySQL queries for reporting features.</li>
+                            <li>Collaborated using Git, performed code reviews, and wrote unit tests.</li>
+                        </ul>
+                        <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">Tech: Java, Spring Boot, MySQL, Git</div>
+                    </div>
+
+                    <div class="p-6 rounded-xl shadow-lg border border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="text-2xl font-semibold">Software Developer Intern — Austere System Pvt. Ltd.</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Jun 2024 &ndash; Aug 2024</p>
+                            </div>
+                            <div class="text-sm text-blue-600 dark:text-violet-400 font-medium">Pune,MH</div>
+                        </div>
+                        <p class="mt-3 text-gray-600 dark:text-gray-300">Built responsive user interfaces and improved UX across multiple client projects.</p>
+                        <ul class="mt-3 list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                            <li>Developed reusable React components and integrated REST APIs.</li>
+                            <li>Implemented responsive layouts with Tailwind CSS and ensured cross-browser compatibility.</li>
+                            <li>Assisted with deployment and basic CI setup for staging environments.</li>
+                        </ul>
+                        <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">Tech: React, Tailwind CSS, REST APIs, Netlify</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 md:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-4xl font-bold text-center mb-12 border-b-4 border-blue-200 dark:border-violet-400 inline-block px-4 pb-2">
+                    Technical Skills
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                    <!-- Skill Card Template -->
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-200 ease-in-out transform hover:-translate-y-1 border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex items-center mb-3">
+                            <svg data-lucide="react" class="h-8 w-8 text-blue-500 dark:text-violet-400 mr-3"></svg>
+                            <h4 class="text-xl font-semibold">Core Java</h4>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Proficient</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex items-center mb-3">
+                            <svg data-lucide="tailwind" class="h-8 w-8 text-teal-500 dark:text-violet-400 mr-3"></svg>
+                            <h4 class="text-xl font-semibold">Object Oriented Programming</h4>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Proficient</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex items-center mb-3">
+                            <svg data-lucide="code" class="h-8 w-8 text-yellow-500 dark:text-violet-400 mr-3"></svg>
+                            <h4 class="text-xl font-semibold">Spring Boot</h4>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Beginner</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex items-center mb-3">
+                            <svg data-lucide="layout-grid" class="h-8 w-8 text-green-500 dark:text-violet-400 mr-3"></svg>
+                            <h4 class="text-xl font-semibold">Web Design Design</h4>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Proficient</p>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex items-center mb-3">
+                            <svg data-lucide="git-branch" class="h-8 w-8 text-orange-500 dark:text-violet-400 mr-3"></svg>
+                            <h4 class="text-xl font-semibold">Git & Version Control</h4>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Intermediate</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="flex items-center mb-3">
+                            <svg data-lucide="cloud" class="h-8 w-8 text-red-500 dark:text-violet-400 mr-3"></svg>
+                            <h4 class="text-xl font-semibold">SQL(MySQL)</h4>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Intermediate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 md:py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-4xl font-bold text-center mb-12 border-b-4 border-blue-200 dark:border-violet-400 inline-block px-4 pb-2">
+                    Featured Projects
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="rounded-xl shadow-xl overflow-hidden group transition duration-200 ease-in-out hover:shadow-2xl border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-700">
+                            <svg data-lucide="camera" class="w-12 h-12 text-gray-400 dark:text-gray-500"></svg>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-2xl font-bold mb-2">📸Photography –Responsive UI</h4>
+                            <p class="mb-4 text-gray-600 dark:text-gray-400">A High-conversion landing page designed for professional wedding photographers. I transformed a high-fidelity Figma design into a fully functional, responsive webpages using modern web technologies.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">React</span>
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">Figma</span>
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">Nelify</span>
+                            </div>
+                            <a href="https://snapphotography.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center transition duration-200 ease-in-out group-hover:text-blue-700 dark:text-violet-400 dark:hover:opacity-80">
+                                View Demo <svg data-lucide="arrow-right" class="ml-1 h-4 w-4"></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="rounded-xl shadow-xl overflow-hidden group transition duration-300 hover:shadow-2xl border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-700">
+                            <svg data-lucide="home" class="w-12 h-12 text-gray-400 dark:text-gray-500"></svg>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-2xl font-bold mb-2">Rental Room System UI</h4>
+                            <p class="mb-4 text-gray-600 dark:text-gray-400">A responsive, modern rental room system featuring smooth transitions with Web technologies</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">Bootstrap</span>
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">HTML/CSS</span>
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">Netlify</span>
+                            </div>
+                            <a href="https://sarvrentalroom.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center transition duration-200 ease-in-out group-hover:text-blue-700 dark:text-violet-400 dark:hover:opacity-80">
+                                View Demo <svg data-lucide="arrow-right" class="ml-1 h-4 w-4"></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="rounded-xl shadow-xl overflow-hidden group transition duration-300 hover:shadow-2xl border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <div class="h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-700">
+                            <svg data-lucide="users" class="w-12 h-12 text-gray-400 dark:text-gray-500"></svg>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-2xl font-bold mb-2">Student Management System</h4>
+                            <p class="mb-4 text-gray-600 dark:text-gray-400">A simple console-based Student Management System built in Java that demonstrates CRUD operations (Create, Read, Update, Delete) using File Handling instead of a database.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">Java</span>
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">File Handling</span>
+                                <span class="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-violet-400">Git/GitHub</span>
+                            </div>
+                            <a href="https://github.com/Rushi029/Student-Management-System.git" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center transition duration-200 ease-in-out group-hover:text-blue-700 dark:text-violet-400 dark:hover:opacity-80">
+                                View Demo <svg data-lucide="arrow-right" class="ml-1 h-4 w-4"></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h3 class="text-4xl font-bold text-center mb-12 border-b-4 border-blue-200 dark:border-violet-400 inline-block px-4 pb-2">
+                    Get In Touch
+                </h3>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                    
+                    <!-- Contact Info Card -->
+                    <div class="lg:col-span-1 p-8 rounded-xl shadow-2xl flex flex-col justify-between
+                                bg-blue-600 dark:bg-gray-800 text-white dark:text-gray-100">
+                            <h4 class="text-3xl font-bold mb-4">Contact Info</h4>
+                        <p class="mb-8 opacity-90">
+                            I'm currently open to new opportunities. Feel free to reach out!
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <svg data-lucide="mail" class="w-5 h-5 text-white dark:text-violet-400"></svg>
+                                <a href="mailto:rushikeshwani.210@gmail.com" class="text-white dark:text-gray-300 hover:underline">rushikeshwani.210@gmail.com</a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg data-lucide="phone" class="w-5 h-5 text-white dark:text-violet-400"></svg>
+                                <a href="tel:+919860587718" class="text-white dark:text-gray-300">+91 98605 87718</a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg data-lucide="linkedin" class="w-5 h-5 text-white dark:text-violet-400"></svg>
+                                <a href="https://www.linkedin.com/in/rushikesh-wani-2903rw" target="_blank" rel="noopener noreferrer" class="hover:underline text-white dark:text-gray-300">LinkedIn Profile</a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg data-lucide="github" class="w-5 h-5 text-white dark:text-violet-400"></svg>
+                                <a href="https://github.com/Rushi029" target="_blank" rel="noopener noreferrer" class="hover:underline text-white dark:text-gray-300">GitHub Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Placeholder -->
+                    <div class="lg:col-span-2 p-8 rounded-xl shadow-xl border border-gray-200
+                                bg-white dark:bg-gray-800 dark:border-gray-700">
+                        <p class="text-center text-xl font-medium text-gray-700 dark:text-gray-300">
+                            <!-- For a fully functional form, please email me directly or connect on LinkedIn. -->
+                        </p>
+                        <div class="mt-8 space-y-4">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+                            <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"></textarea>
+                            <button class="w-full px-6 py-3 text-white font-semibold rounded-lg shadow-md transition duration-200 ease-in-out
+                                       bg-blue-600 hover:bg-blue-700 dark:bg-violet-600 dark:text-white dark:hover:opacity-90">
+                                Send Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm text-gray-500">
+                &copy; <span id="currentYear"></span>connectwithRushi All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <!-- Load local script -->
+    <script src="script.js"></script>
+</body>
+</html>

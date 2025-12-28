@@ -1,0 +1,15 @@
+
+   /* Set default font to Inter, and enable smooth scrolling */
+body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+        /* Custom styling for the switch icon */
+        .icon-sun, .icon-moon {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        /* Hide SVG elements used for icon mapping until Lucide is initialized */
+        [data-lucide] {
+            display: inline-block;
+        }
