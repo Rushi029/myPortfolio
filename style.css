@@ -13,3 +13,20 @@ body {
         [data-lucide] {
             display: inline-block;
         }
+        
+        /* Typing animation for letter by letter */
+        @keyframes typeIn {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .marquee-letter {
+            display: inline-block;
+            animation: typeIn 0.1s ease-out forwards;
+        }
